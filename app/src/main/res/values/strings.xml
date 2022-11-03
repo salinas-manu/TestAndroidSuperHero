@@ -1,11 +1,13 @@
 <resources>
     <string name="app_name">TestAndroidSuperHero</string>
+    <string name="image_super_hero">Image superhero</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="super_hero_comics">COMICS %1$s</string>
-    <string name="super_hero_series">SERIES %1$s</string>
-    <string name="super_hero_stories">STORIES %1$s</string>
-    <string name="super_hero_events">EVENTS %1$s</string>
-    <string name="super_hero_urls">URLS %1$s</string>
+    <string name="super_hero_info">%1$s</string>
+    <string name="comics">Comics</string>
+    <string name="series">Series</string>
+    <string name="stories">Stories</string>
+    <string name="events">Events</string>
+    <string name="urls">Urls</string>
 
 </resources>

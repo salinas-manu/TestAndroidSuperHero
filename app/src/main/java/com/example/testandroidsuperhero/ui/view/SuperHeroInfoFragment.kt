@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.example.testandroidsuperhero.R
 import com.example.testandroidsuperhero.databinding.FragmentSuperHeroInfoBinding
@@ -34,20 +33,19 @@ class SuperHeroInfoFragment : Fragment() {
     private fun observeSuperHeroInfo(){
         superHeroInfoViewModel.fetchSuperHeroById(args.idSuperHero).observe(viewLifecycleOwner){
             binding.tvName.text = it.name
-            binding.tvComics.text = getString(R.string.super_hero_comics, "\n${it.comics}")
-            binding.tvSeries.text = getString(R.string.super_hero_series, "\n${it.series}")
-            binding.tvStories.text = getString(R.string.super_hero_stories, "\n${it.stories}")
-            binding.tvEvents.text = getString(R.string.super_hero_events, "\n${it.events}")
-            binding.tvUrls.text = getString(R.string.super_hero_urls, "\n${it.urls}");
-
+            binding.tvComics.text = getString(R.string.super_hero_info, "\n${it.comics}")
+            binding.tvSeries.text = getString(R.string.super_hero_info, "\n${it.series}")
+            binding.tvStories.text = getString(R.string.super_hero_info, "\n${it.stories}")
+            binding.tvEvents.text = getString(R.string.super_hero_info, "\n${it.events}")
+            binding.tvUrls.text = getString(R.string.super_hero_info, "\n${it.urls}")
         }
     }
 
     private fun message(){
-        superHeroInfoViewModel.message.observe(viewLifecycleOwner, Observer {
+        superHeroInfoViewModel.message.observe(viewLifecycleOwner) {
             it.getContentIfNotHandled()?.let {
                 Toast.makeText(context, it, Toast.LENGTH_LONG).show()
             }
-        })
+        }
     }
 }

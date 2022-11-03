@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardElevation="20dp"
-
     android:layout_marginHorizontal="16dp"
     android:layout_marginVertical="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -20,7 +19,8 @@
         android:layout_height="120dp"
         tools:background="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/image_super_hero"/>
 
     <TextView
         android:id="@+id/tvSuperHeroName"

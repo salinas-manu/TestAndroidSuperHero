@@ -1,0 +1,53 @@
+package com.example.testandroidsuperhero.ui.view
+
+import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
+import com.example.testandroidsuperhero.R
+import com.example.testandroidsuperhero.databinding.FragmentSuperHeroInfoBinding
+import com.example.testandroidsuperhero.ui.viewmodel.SuperHeroInfoViewModel
+
+class SuperHeroInfoFragment : Fragment() {
+    private val args: SuperHeroInfoFragmentArgs by navArgs()
+    private var _binding: FragmentSuperHeroInfoBinding?= null
+    private val superHeroInfoViewModel: SuperHeroInfoViewModel by viewModels()
+    private val binding get() = _binding!!
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentSuperHeroInfoBinding.inflate(inflater, container, false)
+
+        observeSuperHeroInfo()
+        message()
+        // Inflate the layout for this fragment
+        return binding.root
+    }
+
+    private fun observeSuperHeroInfo(){
+        superHeroInfoViewModel.fetchSuperHeroById(args.idSuperHero).observe(viewLifecycleOwner){
+            binding.tvName.text = it.name
+            binding.tvComics.text = getString(R.string.super_hero_comics, "\n${it.comics}")
+            binding.tvSeries.text = getString(R.string.super_hero_series, "\n${it.series}")
+            binding.tvStories.text = getString(R.string.super_hero_stories, "\n${it.stories}")
+            binding.tvEvents.text = getString(R.string.super_hero_events, "\n${it.events}")
+            binding.tvUrls.text = getString(R.string.super_hero_urls, "\n${it.urls}");
+
+        }
+    }
+
+    private fun message(){
+        superHeroInfoViewModel.message.observe(viewLifecycleOwner, Observer {
+            it.getContentIfNotHandled()?.let {
+                Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+}

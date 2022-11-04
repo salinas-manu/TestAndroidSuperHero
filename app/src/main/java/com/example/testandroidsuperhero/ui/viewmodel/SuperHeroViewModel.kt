@@ -7,11 +7,16 @@ import androidx.lifecycle.viewModelScope
 import com.example.testandroidsuperhero.components.Event
 import com.example.testandroidsuperhero.data.model.SuperHero
 import com.example.testandroidsuperhero.repository.SuperHeroRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SuperHeroViewModel: ViewModel() {
+@HiltViewModel
+class SuperHeroViewModel @Inject constructor(
+    private val superHeroRepository:SuperHeroRepository
+) : ViewModel() {
     private val mutableList = MutableLiveData<MutableList<SuperHero>>()
-    private val superHeroRepository = SuperHeroRepository()
+    //private val superHeroRepository = SuperHeroRepository()
     private val statusMessage = MutableLiveData<Event<String>>()
     val isLoading = MutableLiveData<Boolean>()
     val message : LiveData<Event<String>>

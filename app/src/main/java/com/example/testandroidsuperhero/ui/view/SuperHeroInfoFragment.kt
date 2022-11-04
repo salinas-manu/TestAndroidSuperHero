@@ -11,7 +11,9 @@ import androidx.navigation.fragment.navArgs
 import com.example.testandroidsuperhero.R
 import com.example.testandroidsuperhero.databinding.FragmentSuperHeroInfoBinding
 import com.example.testandroidsuperhero.ui.viewmodel.SuperHeroInfoViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SuperHeroInfoFragment : Fragment() {
     private val args: SuperHeroInfoFragmentArgs by navArgs()
     private var _binding: FragmentSuperHeroInfoBinding?= null

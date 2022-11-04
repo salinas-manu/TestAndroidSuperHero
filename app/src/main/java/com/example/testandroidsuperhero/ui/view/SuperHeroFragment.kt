@@ -15,7 +15,10 @@ import com.example.testandroidsuperhero.adapter.SuperHeroAdapter
 import com.example.testandroidsuperhero.databinding.FragmentSuperHeroBinding
 import com.example.testandroidsuperhero.data.model.SuperHero
 import com.example.testandroidsuperhero.ui.viewmodel.SuperHeroViewModel
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.HiltAndroidApp
 
+@AndroidEntryPoint
 class SuperHeroFragment : Fragment() {
     //ViewBinding
     private var _binding: FragmentSuperHeroBinding?= null

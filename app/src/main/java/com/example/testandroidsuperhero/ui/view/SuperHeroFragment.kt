@@ -45,6 +45,12 @@ class SuperHeroFragment : Fragment() {
         return binding.root
     }
 
+    // References to the instance are deleted
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun isLoadingData(){
         superHeroViewModel.isLoading.observe(viewLifecycleOwner){
             binding.progressBar.isVisible = it

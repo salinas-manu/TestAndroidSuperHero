@@ -3,7 +3,6 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import com.example.testandroidsuperhero.databinding.DialogSuperheroBinding
@@ -20,7 +19,7 @@ class SuperHeroDialog(
     private lateinit var binding: DialogSuperheroBinding
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        binding = DialogSuperheroBinding.inflate(LayoutInflater.from(context))
+        binding = DialogSuperheroBinding.inflate(layoutInflater)
 
         val builder = AlertDialog.Builder(requireActivity())
         builder.setView(binding.root)

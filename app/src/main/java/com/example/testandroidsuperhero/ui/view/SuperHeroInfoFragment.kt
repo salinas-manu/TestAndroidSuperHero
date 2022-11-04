@@ -30,8 +30,19 @@ class SuperHeroInfoFragment : Fragment() {
         return binding.root
     }
 
+    // References to the instance are deleted
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
     private fun observeSuperHeroInfo(){
         superHeroInfoViewModel.fetchSuperHeroById(args.idSuperHero).observe(viewLifecycleOwner){
+            if (it.comics.isNotEmpty()) binding.cardViewComics.visibility = View.VISIBLE
+            if (it.series.isNotEmpty()) binding.cardViewSeries.visibility = View.VISIBLE
+            if (it.stories.isNotEmpty()) binding.cardViewStories.visibility = View.VISIBLE
+            if (it.events.isNotEmpty()) binding.cardViewEvents.visibility = View.VISIBLE
+            if (it.urls.isNotEmpty()) binding.cardViewUrls.visibility = View.VISIBLE
             binding.tvName.text = it.name
             binding.tvComics.text = getString(R.string.super_hero_info, "\n${it.comics}")
             binding.tvSeries.text = getString(R.string.super_hero_info, "\n${it.series}")
